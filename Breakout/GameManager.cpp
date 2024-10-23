@@ -24,6 +24,8 @@ void GameManager::initialize()
     _powerupManager = new PowerupManager(_window, _paddle, _ball);
     _ui = new UI(_window, _lives, this);
 
+    _view_centre = _window->getView().getCenter();
+
     _shake_timer = 100.f;
 
     // Create bricks
@@ -91,7 +93,7 @@ void GameManager::update(float dt)
     if (_shake_timer < 0.5f) {
         sf::View current_view = _window->getView();
 
-        current_view.setCenter(_view_centre + sf::Vector2f(sin(_shake_timer * 20) * 10, sin(_shake_timer * 10) * 20));
+        current_view.setCenter(_view_centre + sf::Vector2f(sin(_shake_timer * 30) * 10, sin(_shake_timer * 30) * 20));
 
         _window->setView(current_view);
 
