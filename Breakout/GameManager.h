@@ -40,6 +40,8 @@ private:
     sf::Text _masterText;
 
     sf::RenderWindow* _window;
+    sf::Vector2f _view_centre;
+    float _shake_timer;
     Paddle* _paddle;
     Ball* _ball;
     BrickManager* _brickManager;
@@ -49,4 +51,5 @@ private:
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;
     static constexpr float POWERUP_FREQUENCY = 7.5f;    // time between minimum powerup spawn
+    int POWERUP_CHANCE = 700.f;    // time between minimum powerup spawn
 };

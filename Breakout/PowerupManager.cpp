@@ -76,6 +76,7 @@ void PowerupManager::spawnPowerup()
         _powerups.push_back(new PowerupFireBall(_window, _paddle, _ball));
         break;
     case 5:
+        _powerups.push_back(new PowerupFireBall(_window, _paddle, _ball));
        break;
     }
 

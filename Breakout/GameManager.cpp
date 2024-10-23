@@ -24,6 +24,8 @@ void GameManager::initialize()
     _powerupManager = new PowerupManager(_window, _paddle, _ball);
     _ui = new UI(_window, _lives, this);
 
+    _shake_timer = 100.f;
+
     // Create bricks
     _brickManager->createBricks(5, 10, 80.0f, 30.0f, 5.0f);
 }
@@ -71,7 +73,7 @@ void GameManager::update(float dt)
     _time += dt;
 
 
-    if (_time > _timeLastPowerupSpawned + POWERUP_FREQUENCY && rand()%700 == 0)      // TODO parameterise
+    if (_time > _timeLastPowerupSpawned + POWERUP_FREQUENCY && rand() % POWERUP_CHANCE == 0)
     {
         _powerupManager->spawnPowerup();
         _timeLastPowerupSpawned = _time;
@@ -85,6 +87,16 @@ void GameManager::update(float dt)
     _paddle->update(dt);
     _ball->update(dt);
     _powerupManager->update(dt);
+
+    if (_shake_timer < 0.5f) {
+        sf::View current_view = _window->getView();
+
+        current_view.setCenter(_view_centre + sf::Vector2f(sin(_shake_timer * 20) * 10, sin(_shake_timer * 10) * 20));
+
+        _window->setView(current_view);
+
+        _shake_timer += dt;
+    }
 }
 
 void GameManager::loseLife()
@@ -92,7 +104,7 @@ void GameManager::loseLife()
     _lives--;
     _ui->lifeLost(_lives);
 
-    // TODO screen shake.
+    _shake_timer = 0.f;
 }
 
 void GameManager::render()
