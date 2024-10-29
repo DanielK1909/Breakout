@@ -13,12 +13,6 @@ big/small paddle (blue)
 fast/slow ball (fancy yellow)
 fire ball (green)
 
-# Tasklist
-
-## Suggested fixes
-
-* Fix the compiler issues in the code
-
 ## Suggested tasks
 
 * Implement mouse input for pad
@@ -32,4 +26,5 @@ fire ball (green)
 * Implement commentary with calls to an LLM such as LLama
 
 # Time Details and Changelist
-<Add information to this section about the time you've taken for this task along with a professional changelist.>
+* Added screen shake
+* Fixed compiler errors
