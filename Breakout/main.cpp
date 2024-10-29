@@ -19,11 +19,13 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            gameManager.promptNameInput(event);
         }
 
         deltaTime = clock.restart().asSeconds();
 
-        gameManager.update(deltaTime);
+        gameManager.update(deltaTime, event);
 
         window.clear();
         gameManager.render();

@@ -17,6 +17,8 @@ public:
 	void lifeLost(int lives);
 	void render();
 
+	void resetLives();
+
 private:
 	GameManager* _gameManager;
 	

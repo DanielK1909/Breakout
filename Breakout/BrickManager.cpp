@@ -8,6 +8,8 @@ BrickManager::BrickManager(sf::RenderWindow* window, GameManager* gameManager)
 
 void BrickManager::createBricks(int rows, int cols, float brickWidth, float brickHeight, float spacing)
 {
+    _bricks.clear();
+
     float leftEdge;
     if (cols % 2 == 0) 
         leftEdge = _window->getSize().x / 2 - ((cols / 2.0f) * brickWidth + (cols / 2.0f - 0.5f) * spacing);
@@ -57,4 +59,8 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
         _gameManager->levelComplete();
     }
     return collisionResponse;
+}
+
+int BrickManager::getRemainingBricks() {
+    return _bricks.size();
 }
